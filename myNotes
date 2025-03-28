@@ -1,0 +1,142 @@
+GitLab Notes
+1. Introduction to GitLab
+GitLab is a web-based DevOps lifecycle tool that provides a Git repository manager with CI/CD, issue tracking, and more.
+
+2. Key Features
+Git Repository Management – Similar to GitHub but self-hosted or cloud-based.
+
+CI/CD Pipelines – Automate build, test, and deploy.
+
+Issue Tracking – Manage projects and track bugs.
+
+Merge Requests (MRs) – Code review process.
+
+Access Control – Manage user permissions.
+
+3. GitLab Workflow
+Clone Repository
+
+sh
+Copy
+Edit
+git clone <repo-url>
+cd <repo-name>
+Create a Branch
+
+sh
+Copy
+Edit
+git checkout -b feature-branch
+Make Changes & Commit
+
+sh
+Copy
+Edit
+git add .
+git commit -m "Added new feature"
+Push to Remote Repository
+
+sh
+Copy
+Edit
+git push origin feature-branch
+Create a Merge Request (MR)
+
+Go to GitLab → Merge Requests → New Merge Request
+
+Select source branch (feature-branch) and target branch (main)
+
+Click Create Merge Request
+
+Code Review & Merge
+
+Reviewer checks code
+
+Merge changes after approval
+
+4. GitLab CI/CD Basics
+GitLab CI/CD automates testing and deployment using a .gitlab-ci.yml file.
+
+Example .gitlab-ci.yml
+yaml
+Copy
+Edit
+stages:
+  - build
+  - test
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - echo "Building the project..."
+
+test-job:
+  stage: test
+  script:
+    - echo "Running tests..."
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploying..."
+  only:
+    - main
+stages: Defines pipeline steps.
+
+script: Commands to run in each stage.
+
+only: Runs on the main branch only.
+
+5. GitLab Runner
+A GitLab Runner executes CI/CD pipelines.
+
+Install Runner:
+
+sh
+Copy
+Edit
+sudo gitlab-runner register
+Start Runner:
+
+sh
+Copy
+Edit
+sudo gitlab-runner start
+6. GitLab Issues & Milestones
+Issues → Track bugs/features.
+
+Milestones → Group issues for releases.
+
+Boards → Kanban-style project management.
+
+7. GitLab Permissions
+Role	Access Level
+Guest	Read-only
+Reporter	View issues
+Developer	Push code
+Maintainer	Merge code
+Owner	Full control
+8. Self-Hosting GitLab
+Install GitLab on a server:
+
+sh
+Copy
+Edit
+sudo apt update && sudo apt install gitlab-ce
+Access Web UI via http://your-server-ip
+
+Configure settings in /etc/gitlab/gitlab.rb
+
+9. GitLab Webhooks & Integrations
+Webhooks – Automate tasks by triggering external services.
+
+Integrations – Connect with Jira, Slack, Kubernetes, etc.
+
+10. GitLab vs. GitHub
+Feature	GitLab	GitHub
+CI/CD Built-in	✅ Yes	❌ No (Uses Actions)
+Self-Hosting	✅ Yes	❌ No
+Free Private Repos	✅ Yes	✅ Yes
+Issue Tracking	✅ Yes	✅ Yes
+
