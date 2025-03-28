@@ -1,0 +1,123 @@
+📌 GitLab Notes for DevOps
+1. Basic Git Operations
+Initialize a Repository (Local):
+
+bash
+Copy code
+git init
+Clone a Repository (from GitLab):
+
+bash
+Copy code
+git clone git@gitlab.com:USERNAME/REPO_NAME.git
+Add Files to Staging Area:
+
+bash
+Copy code
+git add .
+Commit Changes:
+
+bash
+Copy code
+git commit -m "Commit message"
+Push to Remote Repository:
+
+bash
+Copy code
+git push origin main  # or 'master' if using the default branch name
+Pull Changes from Remote Repository:
+
+bash
+Copy code
+git pull
+2. Working with Branches
+Create a New Branch:
+
+bash
+Copy code
+git checkout -b branch_name
+Switch to an Existing Branch:
+
+bash
+Copy code
+git checkout branch_name
+Merge Branch to Main:
+
+bash
+Copy code
+git checkout main
+git merge branch_name
+Push a Branch to GitLab:
+
+bash
+Copy code
+git push -u origin branch_name
+3. GitLab SSH Configuration (Done by you)
+Generate SSH Key:
+
+bash
+Copy code
+ssh-keygen -t ed25519 -C "your_email@example.com"
+Add SSH Key to Agent:
+
+bash
+Copy code
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+Copy Public Key to GitLab:
+
+bash
+Copy code
+cat ~/.ssh/id_ed25519.pub
+4. GitLab CI/CD (Basic Setup)
+Create a .gitlab-ci.yml file in the root of your repo:
+
+yaml
+Copy code
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Building the application..."
+
+test:
+  stage: test
+  script:
+    - echo "Running tests..."
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying the application..."
+Push to your repository and GitLab CI/CD will start the pipeline automatically.
+
+5. GitLab Issues & Merge Requests
+Create Issues:
+Track tasks and bugs directly in your repo using the Issues tab.
+
+Merge Requests:
+For code reviews, use Merge Requests. This lets you review, discuss, and approve changes before merging.
+
+6. GitLab Wiki (For Documentation)
+You can create detailed documentation directly in your repo using the Wiki feature. It's great for organizing notes and guides.
+
+7. GitLab CI/CD for DevOps
+Automate building, testing, and deploying your DevOps notes as a static site if needed.
+
+Example of deployment to GitLab Pages:
+
+yaml
+Copy code
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r * .public
+  artifacts:
+    paths:
+      - .public
+

@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = none
+[fetch]
+	recurseSubmodules = false
+[credential]
+	interactive = never
+[transfer]
+	bundleURI = true
+[http "https://gitlab.com"]
+	sslCAInfo = /home/nithin/git-lab/builds/t3_qxyDyY/0/nithin6924113/devopsnotes.tmp/CI_SERVER_TLS_CA_FILE
